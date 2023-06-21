@@ -1,0 +1,32 @@
+{
+  "name": "bajo-config",
+  "version": "0.0.1",
+  "description": "More config file format for Bajo Framework",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ardhi/bajo-config.git"
+  },
+  "keywords": [
+    "bajo",
+    "config",
+    "framework",
+    "modular",
+    "yaml",
+    "toml"
+  ],
+  "author": "Ardhi Lukianto <ardhi@lukianto.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ardhi/bajo-config/issues"
+  },
+  "homepage": "https://github.com/ardhi/bajo-config#readme",
+  "dependencies": {
+    "js-yaml": "^4.1.0",
+    "toml": "^3.0.0"
+  }
+}
