@@ -11,8 +11,8 @@ const tomlHandler = function (file) {
   return toml.parse(fs.readFileSync(file, 'utf8'))
 }
 
-export default {
-  '.yaml': yamlHandler,
-  '.yml': yamlHandler,
-  '.toml': tomlHandler
-}
+export default [
+  { ext: '.yaml', handler: yamlHandler },
+  { ext: '.yml', handler: yamlHandler },
+  { ext: '.toml', handler: tomlHandler }
+]
