@@ -1,14 +1,18 @@
 import yaml from 'js-yaml'
-import toml from 'toml'
+import toml from '@iarna/toml'
 
-const yamlHandler = function (file) {
-  const { fs } = this.bajo.helper
-  return yaml.load(fs.readFileSync(file, 'utf8'))
+const yamlHandler = async function (file, isContent) {
+  const { importPackage } = this.bajo.helper
+  const fs = await importPackage('fs-extra::bajo')
+  const content = isContent ? file : fs.readFileSync(file, 'utf8')
+  return yaml.load(content)
 }
 
-const tomlHandler = function (file) {
-  const { fs } = this.bajo.helper
-  return toml.parse(fs.readFileSync(file, 'utf8'))
+const tomlHandler = async function (file, isContent) {
+  const { importPackage } = this.bajo.helper
+  const fs = await importPackage('fs-extra::bajo')
+  const content = isContent ? file : fs.readFileSync(file, 'utf8')
+  return toml.parse(content)
 }
 
 export default [
