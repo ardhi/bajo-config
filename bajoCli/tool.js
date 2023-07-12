@@ -28,8 +28,8 @@ const handler = {
 }
 
 async function tool ({ path, args = []}) {
-  const { importPackage, print, pathResolve } = this.bajo.helper
-  const { _, fs, prompts } = await importPackage('lodash:_:bajo', 'fs-extra:fs:bajo',
+  const { importPkg, print, pathResolve } = this.bajo.helper
+  const { _, fs, prompts } = await importPkg('lodash:_:bajo', 'fs-extra:fs:bajo',
     '@inquirer/prompts:prompts:bajo-cli')
   const { input, select } = prompts
   let [src, dest] = args
