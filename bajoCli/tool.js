@@ -29,13 +29,13 @@ const handler = {
 
 async function tool ({ path, args = []}) {
   const { importPkg, print, pathResolve } = this.bajo.helper
-  const { _, fs, prompts } = await importPkg('lodash:_:bajo', 'fs-extra:fs:bajo',
-    '@inquirer/prompts:prompts:bajo-cli')
+  const [_, fs, prompts, delay] = await importPkg('lodash::bajo', 'fs-extra::bajo',
+    '@inquirer/prompts::bajo-cli', 'delay::bajo')
   const { input, select } = prompts
   let [src, dest] = args
   if (!path) {
     path = await select({
-      message: 'Please select a method:',
+      message: print.format('Please select a method:'),
       choices: _.map(_.keys(handler), k => ({ value: k }))
     })
     let from = []
@@ -48,12 +48,12 @@ async function tool ({ path, args = []}) {
     else to = '.yaml'
 
     src = await input({
-      message: `Source file (${_.map(from, f => '*' + f).join(', ')}):`,
+      message: print.format(`Source file (%s):`, _.map(from, f => '*' + f).join(', ')),
       validate: (item) => {
         if (_.isEmpty(item)) return false
         const ext = Path.extname(item)
         if (from.includes(ext)) return true
-        return 'Invalid extention'
+        return print.format('Invalid extention')
       }
     })
     let defVal = src
@@ -61,17 +61,17 @@ async function tool ({ path, args = []}) {
       defVal = defVal.replaceAll(f, to)
     })
     dest = await input({
-      message: `Destination file (*${to}). Left empty to show on screen:`,
+      message: print.format(`Destination file (*%s). Left empty to show on screen:`, to),
       default: defVal,
       validate: (item) => {
         if (_.isEmpty(item)) return true
         const ext = Path.extname(item)
         if (to === ext) return true
-        return 'Invalid extention'
+        return print.format('Invalid extention')
       }
     })
   }
-  if (!_.keys(handler).includes(path)) print.fatal(`Choose only one of these: ${_.map(_.keys(handler), c => `'bajoConfig:${c}'`).join(', ')}`)
+  if (!_.keys(handler).includes(path)) print.fatal(`Choose only one of these: %s`, _.map(_.keys(handler), c => `'bajoConfig:${c}'`).join(', '))
   if (!src) print.fatal(`You must provide a source file`)
   src = pathResolve(src)
   dest = _.isEmpty(dest) ? null : pathResolve(dest)
@@ -80,13 +80,13 @@ async function tool ({ path, args = []}) {
     const dir = Path.dirname(dest)
     if (!fs.existsSync(dir)) print.fatal(`Destination dir '%s' not found. Aborted!`, dir)
   }
-  const spinner = print.ora('Converting...').start()
+  const spinner = print.bora('Converting...').start()
+  await delay(3000)
   let result
   try {
     result = await handler[path].call(this, src)
   } catch (err) {
-    spinner.fail(`Error: ${err.message}`)
-    process.exit(1)
+    spinner.fatal(`Error: %s`, err.message)
   }
   spinner.info('Done!')
   if (_.isEmpty(dest)) {

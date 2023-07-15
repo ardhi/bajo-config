@@ -1,0 +1,10 @@
+{
+  "Source file (%s):": "Berkas sumber (%s)",
+  "Invalid extention": "Ekstensi tidak dikenal",
+  "Destination file (*%s). Left empty to show on screen:": "Berkas tujuan (*%s). Kosongkan untuk tampil di layar:",
+  "Choose only one of these: %s": "Hanya pilih satu diantara berikut: %s",
+  "You must provide a source file": "Anda harus menyertakan sebuah berkas sumber",
+  "Source file '%s' not found. Aborted!": "Berkas sumber '%s' tidak ditemukan. Batalkan!",
+  "Destination dir '%s' not found. Aborted!": "Direktori tujuan '%s' tidak ditemukan. Batalkan!",
+  "Converting...": "Konversikan..."
+}
