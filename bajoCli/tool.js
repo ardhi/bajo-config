@@ -35,7 +35,7 @@ async function tool ({ path, args = []}) {
   let [src, dest] = args
   if (!path) {
     path = await select({
-      message: print.format('Please select a method:'),
+      message: print.__('Please select a method:'),
       choices: _.map(_.keys(handler), k => ({ value: k }))
     })
     let from = []
@@ -48,12 +48,12 @@ async function tool ({ path, args = []}) {
     else to = '.yaml'
 
     src = await input({
-      message: print.format(`Source file (%s):`, _.map(from, f => '*' + f).join(', ')),
+      message: print.__(`Source file (%s):`, _.map(from, f => '*' + f).join(', ')),
       validate: (item) => {
         if (_.isEmpty(item)) return false
         const ext = Path.extname(item)
         if (from.includes(ext)) return true
-        return print.format('Invalid extention')
+        return print.__('Invalid extention')
       }
     })
     let defVal = src
@@ -61,13 +61,13 @@ async function tool ({ path, args = []}) {
       defVal = defVal.replaceAll(f, to)
     })
     dest = await input({
-      message: print.format(`Destination file (*%s). Left empty to show on screen:`, to),
+      message: print.__(`Destination file (*%s). Left empty to show on screen:`, to),
       default: defVal,
       validate: (item) => {
         if (_.isEmpty(item)) return true
         const ext = Path.extname(item)
         if (to === ext) return true
-        return print.format('Invalid extention')
+        return print.__('Invalid extention')
       }
     })
   }
