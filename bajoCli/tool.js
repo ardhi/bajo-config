@@ -27,10 +27,10 @@ const handler = {
   }
 }
 
-async function tool ({ path, args = []}) {
+async function tool ({ path, args = [] }) {
   const { importPkg, print, pathResolve } = this.bajo.helper
-  const { map, keys, isEmpty } = await importPkg('lodash-es::bajo')
-  const [fs, prompts, delay] = await importPkg('fs-extra::bajo', '@inquirer/prompts::bajo-cli', 'delay::bajo')
+  const { map, keys, isEmpty, each } = await importPkg('lodash-es')
+  const [fs, prompts, delay] = await importPkg('fs-extra', 'bajo-cli:@inquirer/prompts', 'delay')
   const { input, select } = prompts
   let [src, dest] = args
   if (!path) {
@@ -48,7 +48,7 @@ async function tool ({ path, args = []}) {
     else to = '.yaml'
 
     src = await input({
-      message: print.__(`Source file (%s):`, map(from, f => '*' + f).join(', ')),
+      message: print.__('Source file (%s):', map(from, f => '*' + f).join(', ')),
       validate: (item) => {
         if (isEmpty(item)) return false
         const ext = Path.extname(item)
@@ -61,7 +61,7 @@ async function tool ({ path, args = []}) {
       defVal = defVal.replaceAll(f, to)
     })
     dest = await input({
-      message: print.__(`Destination file (*%s). Left empty to show on screen:`, to),
+      message: print.__('Destination file (*%s). Left empty to show on screen:', to),
       default: defVal,
       validate: (item) => {
         if (isEmpty(item)) return true
@@ -71,14 +71,14 @@ async function tool ({ path, args = []}) {
       }
     })
   }
-  if (!keys(handler).includes(path)) print.fatal(`Choose only one of these: %s`, map(keys(handler), c => `'bajoConfig:${c}'`).join(', '))
-  if (!src) print.fatal(`You must provide a source file`)
+  if (!keys(handler).includes(path)) print.fatal('Choose only one of these: %s', map(keys(handler), c => `'bajoConfig:${c}'`).join(', '))
+  if (!src) print.fatal('You must provide a source file')
   src = pathResolve(src)
   dest = isEmpty(dest) ? null : pathResolve(dest)
-  if (!fs.existsSync(src)) print.fatal(`Source file '%s' not found. Aborted!`, src)
+  if (!fs.existsSync(src)) print.fatal('Source file \'%s\' not found. Aborted!', src)
   if (dest) {
     const dir = Path.dirname(dest)
-    if (!fs.existsSync(dir)) print.fatal(`Destination dir '%s' not found. Aborted!`, dir)
+    if (!fs.existsSync(dir)) print.fatal('Destination dir \'%s\' not found. Aborted!', dir)
   }
   const spinner = print.bora('Converting...').start()
   await delay(3000)
@@ -86,7 +86,7 @@ async function tool ({ path, args = []}) {
   try {
     result = await handler[path].call(this, src)
   } catch (err) {
-    spinner.fatal(`Error: %s`, err.message)
+    spinner.fatal('Error: %s', err.message)
   }
   spinner.info('Done!')
   if (isEmpty(dest)) {
