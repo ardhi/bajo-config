@@ -28,7 +28,7 @@ const handler = {
 }
 
 async function tool ({ path, args = [] }) {
-  const { importPkg, print, pathResolve } = this.bajo.helper
+  const { importPkg, print, resolvePath } = this.bajo.helper
   const { map, keys, isEmpty, each } = await importPkg('lodash-es')
   const [fs, prompts, delay] = await importPkg('fs-extra', 'bajo-cli:@inquirer/prompts', 'delay')
   const { input, select } = prompts
@@ -73,8 +73,8 @@ async function tool ({ path, args = [] }) {
   }
   if (!keys(handler).includes(path)) print.fatal('Choose only one of these: %s', map(keys(handler), c => `'bajoConfig:${c}'`).join(', '))
   if (!src) print.fatal('You must provide a source file')
-  src = pathResolve(src)
-  dest = isEmpty(dest) ? null : pathResolve(dest)
+  src = resolvePath(src)
+  dest = isEmpty(dest) ? null : resolvePath(dest)
   if (!fs.existsSync(src)) print.fatal('Source file \'%s\' not found. Aborted!', src)
   if (dest) {
     const dir = Path.dirname(dest)
