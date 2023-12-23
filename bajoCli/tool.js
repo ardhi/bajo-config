@@ -28,7 +28,7 @@ const handler = {
 }
 
 async function tool ({ path, args = [] }) {
-  const { importPkg, print, resolvePath } = this.bajo.helper
+  const { importPkg, print, resolvePath, spinner } = this.bajo.helper
   const { map, keys, isEmpty, each } = await importPkg('lodash-es')
   const [fs, prompts, delay] = await importPkg('fs-extra', 'bajo-cli:@inquirer/prompts', 'delay')
   const { input, select } = prompts
@@ -80,15 +80,15 @@ async function tool ({ path, args = [] }) {
     const dir = Path.dirname(dest)
     if (!fs.existsSync(dir)) print.fatal('Destination dir \'%s\' not found. Aborted!', dir)
   }
-  const spinner = print.bora('Converting...').start()
+  const spin = spinner().start('Converting...')
   await delay(3000)
   let result
   try {
     result = await handler[path].call(this, src)
   } catch (err) {
-    spinner.fatal('Error: %s', err.message)
+    spin.fatal('Error: %s', err.message)
   }
-  spinner.info('Done!')
+  spin.info('Done!')
   if (isEmpty(dest)) {
     console.log(result)
   } else {
