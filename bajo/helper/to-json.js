@@ -1,6 +1,5 @@
 async function toJson (file, isContent, opts = 2) {
-  const { importPkg } = this.bajo.helper
-  const fs = await importPkg('fs-extra')
+  const { fs } = this.bajo.helper
   const content = isContent ? file : JSON.parse(fs.readFileSync(file, 'utf8'))
   return JSON.stringify(content, null, opts)
 }

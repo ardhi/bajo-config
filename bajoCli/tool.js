@@ -28,9 +28,9 @@ const handler = {
 }
 
 async function tool ({ path, args = [] }) {
-  const { importPkg, print, resolvePath, spinner } = this.bajo.helper
-  const { map, keys, isEmpty, each } = await importPkg('lodash-es')
-  const [fs, prompts, delay] = await importPkg('fs-extra', 'bajo-cli:@inquirer/prompts', 'delay')
+  const { fs, importPkg, print, resolvePath, spinner } = this.bajo.helper
+  const { map, keys, isEmpty, each } = this.bajo.helper._
+  const [prompts, delay] = await importPkg('bajoCli:@inquirer/prompts', 'delay')
   const { input, select } = prompts
   let [src, dest] = args
   if (!path) {
