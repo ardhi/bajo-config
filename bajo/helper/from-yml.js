@@ -1,2 +1,2 @@
-import handlers from '../extend/read-config.js'
+import handlers from '../config-handlers.js'
 export default handlers.find(h => h.ext === '.yml').handler
