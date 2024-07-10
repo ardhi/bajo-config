@@ -1,5 +1,7 @@
 # bajo-config
 
+Plugin name: **bajoConfig**, alias: **cfg**
+
 ![GitHub package.json version](https://img.shields.io/github/package-json/v/ardhi/bajo-config) ![NPM Version](https://img.shields.io/npm/v/bajo-config)
 
 > <br />**Attention**: I do NOT accept any pull request at the moment, thanks!<br /><br />
