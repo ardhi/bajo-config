@@ -1,9 +1,9 @@
-import fromJson from '../bajo/helper/from-json.js'
-import fromToml from '../bajo/helper/from-toml.js'
-import fromYaml from '../bajo/helper/from-yaml.js'
-import toJson from '../bajo/helper/to-json.js'
-import toToml from '../bajo/helper/to-toml.js'
-import toYaml from '../bajo/helper/to-yaml.js'
+import fromJson from '../bajo/method/from-json.js'
+import fromToml from '../bajo/method/from-toml.js'
+import fromYaml from '../bajo/method/from-yaml.js'
+import toJson from '../bajo/method/to-json.js'
+import toToml from '../bajo/method/to-toml.js'
+import toYaml from '../bajo/method/to-yaml.js'
 import Path from 'path'
 
 const handler = {
@@ -28,8 +28,9 @@ const handler = {
 }
 
 async function tool ({ path, args = [] }) {
-  const { fs, importPkg, print, resolvePath, spinner } = this.bajo.helper
-  const { map, keys, isEmpty, each } = this.bajo.helper._
+  const { importPkg, print, resolvePath, spinner } = this.bajo
+  const { fs } = this.bajo.lib
+  const { map, keys, isEmpty, each } = this.bajo.lib._
   const [prompts, delay] = await importPkg('bajoCli:@inquirer/prompts', 'delay')
   const { input, select } = prompts
   let [src, dest] = args
