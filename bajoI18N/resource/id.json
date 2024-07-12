@@ -1,5 +1,5 @@
 {
-  "Source file (%s):": "Berkas sumber (%s)",
+  "Source file (%s):": "Berkas sumber (%s):",
   "Invalid extention": "Ekstensi tidak dikenal",
   "Destination file (*%s). Left empty to show on screen:": "Berkas tujuan (*%s). Kosongkan untuk tampil di layar:",
   "Choose only one of these: %s": "Hanya pilih satu diantara berikut: %s",
