@@ -28,7 +28,7 @@ const handler = {
   }
 }
 
-async function tool ({ path, args = [] }) {
+async function applet (path, ...args) {
   const { importPkg, resolvePath } = this.app.bajo
   const { fs } = this.app.bajo.lib
   const { map, keys, isEmpty, each } = this.app.bajo.lib._
@@ -99,4 +99,4 @@ async function tool ({ path, args = [] }) {
   }
 }
 
-export default tool
+export default applet
