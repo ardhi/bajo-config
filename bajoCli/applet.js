@@ -30,8 +30,8 @@ const handler = {
 
 async function applet (path, ...args) {
   const { importPkg, resolvePath } = this.app.bajo
-  const { fs } = this.app.bajo.lib
-  const { map, keys, isEmpty, each } = this.app.bajo.lib._
+  const { fs } = this.lib
+  const { map, keys, isEmpty, each } = this.lib._
   const [prompts, delay] = await importPkg('bajoCli:@inquirer/prompts', 'delay')
   const { input, select } = prompts
   let [src, dest] = args
