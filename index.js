@@ -1,9 +1,9 @@
-import fromJson from '../lib/from-json.js'
-import fromYaml from '../lib/from-yaml.js'
-import fromToml from '../lib/from-toml.js'
-import toJson from '../lib/to-json.js'
-import toYaml from '../lib/to-yaml.js'
-import toToml from '../lib/to-toml.js'
+import fromJson from './lib/from-json.js'
+import fromYaml from './lib/from-yaml.js'
+import fromToml from './lib/from-toml.js'
+import toJson from './lib/to-json.js'
+import toYaml from './lib/to-yaml.js'
+import toToml from './lib/to-toml.js'
 
 async function factory (pkgName) {
   const me = this
