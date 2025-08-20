@@ -1,9 +1,9 @@
-import fromJson from '../bajo/method/from-json.js'
-import fromToml from '../bajo/method/from-toml.js'
-import fromYaml from '../bajo/method/from-yaml.js'
-import toJson from '../bajo/method/to-json.js'
-import toToml from '../bajo/method/to-toml.js'
-import toYaml from '../bajo/method/to-yaml.js'
+import fromJson from '../../lib/from-json.js'
+import fromToml from '../../lib/from-toml.js'
+import fromYaml from '../../lib/from-yaml.js'
+import toJson from '../../lib/to-json.js'
+import toToml from '../../lib/to-toml.js'
+import toYaml from '../../lib/to-yaml.js'
 import Path from 'path'
 
 const handler = {
