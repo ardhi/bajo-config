@@ -1,7 +1,7 @@
-import fromToml from '../lib/from-toml.js'
-import fromYaml from '../lib/from-yaml.js'
-import toYaml from '../lib/to-yaml.js'
-import toToml from '../lib/to-toml.js'
+import fromToml from '../../lib/from-toml.js'
+import fromYaml from '../../lib/from-yaml.js'
+import toYaml from '../../lib/to-yaml.js'
+import toToml from '../../lib/to-toml.js'
 
 const yamlReadHandler = async function (file, opts = {}) {
   if (opts === true) opts = { isContent: true }
