@@ -30,14 +30,14 @@ const handler = {
 
 async function applet (path, ...args) {
   const { importPkg, resolvePath } = this.app.bajo
-  const { fs } = this.lib
-  const { map, keys, isEmpty, each } = this.lib._
+  const { fs } = this.app.lib
+  const { map, keys, isEmpty, each } = this.app.lib._
   const [prompts, delay] = await importPkg('bajoCli:@inquirer/prompts', 'delay')
   const { input, select } = prompts
   let [src, dest] = args
   if (!path) {
     path = await select({
-      message: this.print.write('Please select a method:'),
+      message: this.t('Please select a method:'),
       choices: map(keys(handler), k => ({ value: k }))
     })
     let from = []
@@ -50,12 +50,12 @@ async function applet (path, ...args) {
     else to = '.yaml'
 
     src = await input({
-      message: this.print.write('Source file (%s):', map(from, f => '*' + f).join(', ')),
+      message: this.t('Source file (%s):', map(from, f => '*' + f).join(', ')),
       validate: (item) => {
         if (isEmpty(item)) return false
         const ext = Path.extname(item)
         if (from.includes(ext)) return true
-        return this.print.write('Invalid extention')
+        return this.t('Invalid extention')
       }
     })
     let defVal = src
@@ -63,13 +63,13 @@ async function applet (path, ...args) {
       defVal = defVal.replaceAll(f, to)
     })
     dest = await input({
-      message: this.print.write('Destination file (*%s). Left empty to show on screen:', to),
+      message: this.t('Destination file (*%s). Left empty to show on screen:', to),
       default: defVal,
       validate: (item) => {
         if (isEmpty(item)) return true
         const ext = Path.extname(item)
         if (to === ext) return true
-        return this.print.write('Invalid extention')
+        return this.t('Invalid extention')
       }
     })
   }

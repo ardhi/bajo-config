@@ -8,7 +8,7 @@ import toToml from './lib/to-toml.js'
 async function factory (pkgName) {
   const me = this
 
-  return class BajoConfig extends this.lib.Plugin {
+  return class BajoConfig extends this.app.pluginClass.base {
     constructor () {
       super(pkgName, me.app)
     }
