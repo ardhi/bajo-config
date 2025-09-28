@@ -5,10 +5,21 @@ import toJson from './lib/to-json.js'
 import toYaml from './lib/to-yaml.js'
 import toToml from './lib/to-toml.js'
 
+/**
+ * Plugin factory
+ *
+ * @param {string} pkgName - NPM package name
+ * @returns {class}
+ */
 async function factory (pkgName) {
   const me = this
 
-  return class BajoConfig extends this.app.pluginClass.base {
+  /**
+   * BajoConfig class
+   *
+   * @class
+   */
+  class BajoConfig extends this.app.pluginClass.base {
     constructor () {
       super(pkgName, me.app)
     }
@@ -45,6 +56,8 @@ async function factory (pkgName) {
       return toToml(...args)
     }
   }
+
+  return BajoConfig
 }
 
 export default factory

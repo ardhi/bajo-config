@@ -4,7 +4,8 @@
   "description": "More config file format for Bajo Framework",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build-doc": "jsdoc -c .jsdoc.conf.json",
+    "test": "mocha"
   },
   "type": "module",
   "bajo": {
@@ -31,5 +32,9 @@
   "dependencies": {
     "js-yaml": "^4.1.0",
     "smol-toml": "^1.3.1"
+  },
+  "devDependencies": {
+    "clean-jsdoc-theme": "^4.3.0",
+    "jsdoc-plugin-intersection": "^1.0.4"
   }
 }

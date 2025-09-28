@@ -1,22 +1,25 @@
 # bajo-config
 
-Plugin name: **bajoConfig**, alias: **cfg**
-
 ![GitHub package.json version](https://img.shields.io/github/package-json/v/ardhi/bajo-config) ![NPM Version](https://img.shields.io/npm/v/bajo-config)
 
-> <br />**Attention**: I do NOT accept any pull request at the moment, thanks!<br /><br />
+> <br />**Attention**: I do NOT accept any pull requests at the moment, thanks! ([Why?](https://github.com/ardhi/bajo/blob/main/tutorial/00-welcome.md#contribution))<br /><br />
 
-If you want to use YAML or TOML in your [Bajo](https://github.com/ardhi/bajo) config files, this is the plugin you need to install.
+YML, YAML & TOML support for [Bajo](https://github.com/ardhi/bajo)
 
 ## Installation
 
-Goto your ```<bajo-base-dir>``` and type:
+First, go to your ```{app-dir}``` and run the following command in your terminal:
 
 ```bash
 $ npm install bajo-config
 ```
 
-Now open your ```<bajo-data-dir>/config/.plugins``` and put ```bajo-config``` in it
+Next, open the file located at ```{data-dir}/config/.plugins``` and add ```bajo-config```
+
+## Documentations
+
+- [Config Object](tutorial/00-config.md)
+- [API](https://ardhi.github.io/bajo-config)
 
 ## License
 
