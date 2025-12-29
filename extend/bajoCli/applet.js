@@ -29,7 +29,8 @@ const handler = {
 }
 
 async function applet (path, ...args) {
-  const { importPkg, resolvePath } = this.app.bajo
+  const { importPkg } = this.app.bajo
+  const { resolvePath } = this.app.lib.aneka
   const { fs } = this.app.lib
   const { map, keys, isEmpty, each } = this.app.lib._
   const [prompts, delay] = await importPkg('bajoCli:@inquirer/prompts', 'delay')

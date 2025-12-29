@@ -19,7 +19,7 @@ async function factory (pkgName) {
    *
    * @class
    */
-  class BajoConfig extends this.app.pluginClass.base {
+  class BajoConfig extends this.app.baseClass.Base {
     constructor () {
       super(pkgName, me.app)
     }
