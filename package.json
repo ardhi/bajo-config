@@ -9,7 +9,8 @@
   },
   "type": "module",
   "bajo": {
-    "type": "plugin"
+    "type": "plugin",
+    "alias": "config"
   },
   "repository": {
     "type": "git",
