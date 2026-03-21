@@ -1,5 +1,12 @@
 # Changes
 
+## 2026-03-22
+
+- [2.2.1] Bug fix in ```toJson()```
+- [2.2.1] Bug fix in ```toToml()```
+- [2.2.1] Bug fix in ```toYaml()```
+- [2.2.1] Bug fix in ```configHandlers``` object
+
 ## 2025-12-29
 
 - [2.2.0] Ported to match ```bajo@2.2.x``` specs

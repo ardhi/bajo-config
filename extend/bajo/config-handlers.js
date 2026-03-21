@@ -3,24 +3,20 @@ import fromYaml from '../../lib/from-yaml.js'
 import toYaml from '../../lib/to-yaml.js'
 import toToml from '../../lib/to-toml.js'
 
-const yamlReadHandler = async function (file, opts = {}) {
-  if (opts === true) opts = { isContent: true }
-  return fromYaml(file, opts.isContent)
+const yamlReadHandler = async function (data, opts = {}) {
+  return fromYaml.call(this, data, opts)
 }
 
-const yamlWriteHandler = async function (file, opts = {}) {
-  if (opts === true) opts = { isContent: true }
-  return toYaml(file, opts.isContent)
+const yamlWriteHandler = async function (data, opts = {}) {
+  return toYaml.call(this, data, opts)
 }
 
-const tomlReadHandler = async function (file, opts = {}) {
-  if (opts === true) opts = { isContent: true }
-  return fromToml(file, opts.isContent)
+const tomlReadHandler = async function (data, opts = {}) {
+  return fromToml.call(this, data, opts)
 }
 
-const tomlWriteHandler = async function (file, opts = {}) {
-  if (opts === true) opts = { isContent: true }
-  return toToml(file, opts.isContent)
+const tomlWriteHandler = async function (data, opts = {}) {
+  return toToml.call(this, data, opts)
 }
 
 export default [
