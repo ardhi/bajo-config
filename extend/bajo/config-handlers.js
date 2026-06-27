@@ -1,22 +1,55 @@
-import fromToml from '../../lib/from-toml.js'
-import fromYaml from '../../lib/from-yaml.js'
-import toYaml from '../../lib/to-yaml.js'
-import toToml from '../../lib/to-toml.js'
+/**
+ * Config Handlers
+ *
+ * @module ConfigHandlers
+ * @exports {Array} - An array of handler objects for different file extensions.
+ */
 
-const yamlReadHandler = async function (data, opts = {}) {
-  return fromYaml.call(this, data, opts)
+/**
+ * YAML read handler
+ *
+ * @memberof module:ConfigHandlers
+ * @param {string} text - Text to be parsed
+ * @param {object} opts - Options object
+ * @returns {object} Parsed object
+ */
+const yamlReadHandler = async function (text, opts = {}) {
+  return this.fromYaml(text, opts)
 }
 
-const yamlWriteHandler = async function (data, opts = {}) {
-  return toYaml.call(this, data, opts)
+/**
+ * YAML write handler
+ *
+ * @memberof module:ConfigHandlers
+ * @param {object} object - Object to be converted
+ * @param {object} opts - Options object
+ * @returns {string} YAML string
+ */
+const yamlWriteHandler = async function (object, opts = {}) {
+  return this.toYaml(object, opts)
 }
 
-const tomlReadHandler = async function (data, opts = {}) {
-  return fromToml.call(this, data, opts)
+/**
+ * TOML read handler
+ *
+ * @memberof module:ConfigHandlers
+ * @param {string} text - Text to be parsed
+ * @param {object} opts - Options object
+ * @returns {object} Parsed object
+ */
+const tomlReadHandler = async function (text, opts = {}) {
+  return this.fromToml(text, opts)
 }
 
-const tomlWriteHandler = async function (data, opts = {}) {
-  return toToml.call(this, data, opts)
+/**
+ * TOML write handler
+ *
+ * @param {object} object - Object to be converted
+ * @param {object} opts - Options object
+ * @returns {string} TOML string
+ */
+const tomlWriteHandler = async function (object, opts = {}) {
+  return this.toToml(object, opts)
 }
 
 export default [

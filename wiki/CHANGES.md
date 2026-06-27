@@ -1,5 +1,11 @@
 # Changes
 
+## 2026-06-27
+
+- [2.3.0] Change paramter names
+- [2.3.0] Add documentations
+- [2.3.0] Add test units
+
 ## 2026-03-22
 
 - [2.2.1] Bug fix in ```toJson()```

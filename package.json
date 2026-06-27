@@ -1,6 +1,6 @@
 {
   "name": "bajo-config",
-  "version": "2.2.1",
+  "version": "2.2.2",
   "description": "More config file format for Bajo Framework",
   "main": "index.js",
   "scripts": {
@@ -35,7 +35,9 @@
     "smol-toml": "^1.6.0"
   },
   "devDependencies": {
+    "chai": "^5.2.1",
     "clean-jsdoc-theme": "^4.3.0",
-    "jsdoc-plugin-intersection": "^1.0.4"
+    "jsdoc-plugin-intersection": "^1.0.4",
+    "mocha": "^11.7.6"
   }
 }
