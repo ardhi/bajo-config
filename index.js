@@ -1,4 +1,3 @@
-import yaml from 'js-yaml'
 import toml from 'smol-toml'
 
 /**
@@ -30,46 +29,6 @@ async function factory (pkgName) {
     }
 
     /**
-     * Parse JSON text
-     *
-     * @method
-     * @param {string} text - Text to be parsed
-     * @param {object} options - Options object
-     * @returns {object} Parsed object
-     */
-    fromJson = (text, options = {}) => {
-      const { fs } = this.app.lib
-      const content = options.readFromFile ? fs.readFileSync(text, 'utf8') : text
-      return JSON.parse(content)
-    }
-
-    /**
-     * Parse YAML text
-     *
-     * @method
-     * @param {string} text - Text to be parsed
-     * @param {object} options - Options object
-     * @returns {object} Parsed object
-     */
-    fromYaml = (text, options = {}) => {
-      const { fs } = this.app.lib
-      const content = options.readFromFile ? fs.readFileSync(text, 'utf8') : text
-      return yaml.load(content)
-    }
-
-    /**
-     * Parse YML text. Alias for fromYaml.
-     *
-     * @method
-     * @param {string} text - Text to be parsed
-     * @param {object} options - Options object
-     * @returns {object} Parsed object
-     */
-    fromYml = (text, options = {}) => {
-      return this.fromYaml(text, options)
-    }
-
-    /**
      * Parse TOML text
      *
      * @method
@@ -81,56 +40,6 @@ async function factory (pkgName) {
       const { fs } = this.app.lib
       const content = options.readFromFile ? fs.readFileSync(text, 'utf8') : text
       return toml.parse(content)
-    }
-
-    /**
-     * Convert object to JSON string
-     *
-     * @method
-     * @param {object} object - Object to be converted
-     * @param {object} options - Options object
-     * @returns {string} JSON string
-     */
-    toJson = (object, options = {}) => {
-      const { omit } = this.app.lib._
-      const { fs } = this.app.lib
-      const content = JSON.stringify(object, null, omit(options, ['writeToFile']))
-      if (options.writeToFile) {
-        fs.writeFileSync(options.saveAsFile, content, 'utf8')
-        return
-      }
-      return content
-    }
-
-    /**
-     * Convert object to YAML string
-     *
-     * @method
-     * @param {object} object - Object to be converted
-     * @param {object} options - Options object
-     * @returns {string} YAML string
-     */
-    toYaml = (object, options = {}) => {
-      const { omit } = this.app.lib._
-      const { fs } = this.app.lib
-      const content = yaml.dump(object, omit(options, ['writeToFile']))
-      if (options.writeToFile) {
-        fs.writeFileSync(options.saveAsFile, content, 'utf8')
-        return
-      }
-      return content
-    }
-
-    /**
-     * Convert object to YML string. Alias for toYaml.
-     *
-     * @method
-     * @param {object} object - Object to be converted
-     * @param {object} options - Options object
-     * @returns {string} YML string
-     */
-    toYml = (object, options = {}) => {
-      return this.toYaml(object, options)
     }
 
     /**

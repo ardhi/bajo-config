@@ -1,30 +1,26 @@
-import fromJson from '../../lib/from-json.js'
 import fromToml from '../../lib/from-toml.js'
-import fromYaml from '../../lib/from-yaml.js'
-import toJson from '../../lib/to-json.js'
 import toToml from '../../lib/to-toml.js'
-import toYaml from '../../lib/to-yaml.js'
 import Path from 'path'
 
 const handler = {
   async json2toml (file) {
-    return toToml.call(this, await fromJson.call(this, file), true)
+    return toToml.call(this, await this.app.bajo.fromJson.call(this, file), true)
   },
   async json2yaml (file) {
-    return toYaml.call(this, await fromJson.call(this, file), true)
+    return this.app.bajo.toYaml.call(this, await this.app.bajo.fromJson.call(this, file), true)
   },
   async toml2json (file) {
-    return toJson.call(this, await fromToml.call(this, file), true)
+    return this.app.bajo.toJson.call(this, await fromToml.call(this, file), true)
   },
   async toml2yaml (file) {
-    return toYaml.call(this, await fromToml.call(this, file), true)
+    return this.app.bajo.toYaml.call(this, await fromToml.call(this, file), true)
   },
   async yaml2json (file) {
-    const content = await fromYaml.call(this, file)
-    return toJson.call(this, content, true)
+    const content = await this.app.bajo.fromYaml.call(this, file)
+    return this.app.bajo.toJson.call(this, content, true)
   },
   async yaml2toml (file) {
-    return toToml.call(this, await fromYaml.call(this, file), true)
+    return toToml.call(this, await this.app.bajo.fromYaml.call(this, file), true)
   }
 }
 

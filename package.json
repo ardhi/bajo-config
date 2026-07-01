@@ -1,6 +1,6 @@
 {
   "name": "bajo-config",
-  "version": "2.2.2",
+  "version": "2.4.0",
   "description": "More config file format for Bajo Framework",
   "main": "index.js",
   "scripts": {
@@ -21,7 +21,6 @@
     "config",
     "framework",
     "modular",
-    "yaml",
     "toml"
   ],
   "author": "Ardhi Lukianto <ardhi@lukianto.com>",
@@ -31,7 +30,6 @@
   },
   "homepage": "https://github.com/ardhi/bajo-config#readme",
   "dependencies": {
-    "js-yaml": "^4.1.1",
     "smol-toml": "^1.6.0"
   },
   "devDependencies": {

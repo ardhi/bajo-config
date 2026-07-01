@@ -4,7 +4,7 @@
 
 > <br />**Attention**: I do NOT accept any pull request at the moment, thanks! ([Why?](wiki/CONTRIBUTING.md))<br /><br />
 
-YML, YAML & TOML support for [Bajo Framework](https://github.com/ardhi/bajo)
+TOML support for [Bajo Framework](https://github.com/ardhi/bajo)
 
 ## Installation
 

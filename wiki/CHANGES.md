@@ -1,5 +1,9 @@
 # Changes
 
+## 2026-07-01
+
+- [2.4.0] Remove ```yaml``` because it is now part of ```bajo``` core configHandlers
+
 ## 2026-06-27
 
 - [2.3.0] Change paramter names
